@@ -9,8 +9,8 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     public float speed;
-    private string currentState;
     public bool notIdle = false;
+    private string currentState;
 
 
     // Start is called before the first frame update
