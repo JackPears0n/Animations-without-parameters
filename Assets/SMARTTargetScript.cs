@@ -13,6 +13,7 @@ public class SMARTTargetScript : MonoBehaviour
 
     private Animator anim;
     private string currentState;
+    public bool attack;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,8 @@ public class SMARTTargetScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         helper = gameObject.AddComponent<HelperScript>();
+
+        attack = false;
 
         speed = 3.25F;
     }
@@ -58,24 +61,29 @@ public class SMARTTargetScript : MonoBehaviour
         }
 
         // Play the 1st attack
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ChangeAnimation("Attack1");
+            attack = true;
         }
 
         // Play the 2nd attack
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ChangeAnimation("Attack2");
+            attack = true;
         }
 
         // Play the 3rd attack
-        if (Input.GetKey(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             ChangeAnimation("Attack3");
+            attack = true;
         }
 
-        if (vel.x == 0f && vel.y == 0f)
+        attack = false;
+
+        if (vel.x == 0f && vel.y == 0f && attack == false)
         {
             ChangeAnimation("Idle");
         }
